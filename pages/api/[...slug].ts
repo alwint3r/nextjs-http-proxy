@@ -13,7 +13,7 @@ export const config = {
 const forward: Middleware<NextApiRequest, NextApiResponse> = (req, res, next) =>
   next();
 
-function base() {
+function createApiRoute() {
   const proxy = createProxyMiddleware({
     target: "http://localhost:8128",
     pathRewrite(path, req) {
@@ -48,4 +48,4 @@ function base() {
     .use(proxy);
 }
 
-export default base();
+export default createApiRoute();
